@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна #7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+</head>
+<script>
+    window.onload = async () => {
+        const file = await fetch("jokes.txt");
+        const text = await file.text();
+
+        const lines = text.split('###\n')
+        const joke = lines[Math.floor(Math.random()*(lines.length - 1))]
+
+        document.getElementById("joke").innerText = joke
+    }
+</script>
+<body>
+<div class="flex flex-col items-center min-w-screen min-h-screen bg-neutral-200">
+    <div class="shadow-lg rounded-lg w-11/12 md:w-1/2 p-6 mt-10 bg-white">
+        <h1 class="text-lg font-bold mb-2">Смішний жарт</h1>
+        <p class="text-md text-gray-900" id="joke"></p>
+    </div>
+</div>
+</body>
+</html>
